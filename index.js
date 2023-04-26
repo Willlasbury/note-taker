@@ -7,8 +7,8 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// const allRoutes = require('./controllers');
-// app.use(allRoutes)
+const allRoutes = require('./controllers');
+app.use(allRoutes)
 
 app.listen(PORT,()=>{
-console.log('listening on port' + PORT)})
+console.log('listening on port http://localhost:' + PORT)})
