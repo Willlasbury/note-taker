@@ -10,7 +10,7 @@ router.get("/", (req, res)=>{
 const notesHTML = require('./notes')
 router.use("/notes", notesHTML)
 
-const notesRoute = require('./notes/api')
+const notesRoute = require('./notes/crud')
 router.use("/api/notes", notesRoute)
 
 module.exports = router
