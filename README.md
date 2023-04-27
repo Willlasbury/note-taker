@@ -1,2 +1,5 @@
 # note-taker
-create and save notes 
+You can create and save notes. 
+
+## Description 
+You can save notes 

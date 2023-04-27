@@ -55,18 +55,24 @@ router.post("/", (req, res) => {
   });
 });
 
-
-router.delete("/:id", (req, res) => {
-    fs.readFile("./db/db.json", "utf-8", (err, data) => {
-      if (err) {
-        throw err;
-      } else {
-        let dataArr = JSON.parse(data);
-        if (dataArr[req.body.id]){
-            res.send({"message": "note deleted successfully"})
-        } 
-      }
-    });
-  });
+// The delete route does not work.
+// TODO: check for a body response on trash icon click
+// TODO: check the id endpoint 
+// TODO: remove the id from the dataArr
+// TODO: write to the db.json file with new dataArr
+// router.delete("/:id", (req, res) => {
+//     fs.readFile("./db/db.json", "utf-8", (err, data) => {
+//       if (err) {
+//         throw err;
+//       } else {
+//         let dataArr = JSON.parse(data);
+//         console.log("dataArr:", dataArr)
+//         console.log("req.body", req.body)
+//         if (dataArr[req.body.id]){
+//             res.send({"message": "note deleted successfully"})
+//         } 
+//       }
+//     });
+//   });
 
 module.exports = router;
