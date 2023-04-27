@@ -1,17 +1,32 @@
-const router = require('express').Router()
-const fs = require('fs')
+const router = require("express").Router();
+const fs = require("fs");
 
+router.get("/", (req, res) => {
+  fs.readFile("./db/db.json", "utf-8", (err, data) => {
+    if (err) {
+      throw err;
+    } else {
+      let dataArr = JSON.parse(data);
+      res.send(dataArr);
+    }
+  });
+});
 
-router.get('/', (req,res) => {
-    fs.readFile('./db/db.json', 'utf-8', (err, data)=>{
-        if (err){
-            throw err
+router.post("/", (req, res) => {
+  fs.readFile("./db/db.json", "utf-8", (err, data) => {
+    if (err) {
+      throw err;
+    } else {
+      let dataArr = JSON.parse(data);
+      dataArr.push(req.body);
+      fs.writeFile("./db/db.json", JSON.stringify(dataArr), null, (err) => {
+        if (err) {
+          throw err;
         } else {
-            let dataArr = JSON.parse(data)
-            res.send(dataArr)
+            console.log("test")
         }
-    })
-})
-
-
-module.exports = router
+      });
+    }
+  });
+});
+module.exports = router;
