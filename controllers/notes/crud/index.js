@@ -25,7 +25,7 @@ router.get("/:id", (req, res) => {
         if (dataArr[req.body.id]){
             res.send(dataArr[req.body.id])
         } else{
-            alert(`Could not find id ${req.body.id}`)
+            res.send(`Could not find id ${req.body.id}`)
         }
       }
     });
@@ -55,5 +55,18 @@ router.post("/", (req, res) => {
   });
 });
 
+
+router.delete("/:id", (req, res) => {
+    fs.readFile("./db/db.json", "utf-8", (err, data) => {
+      if (err) {
+        throw err;
+      } else {
+        let dataArr = JSON.parse(data);
+        if (dataArr[req.body.id]){
+            res.send({"message": "note deleted successfully"})
+        } 
+      }
+    });
+  });
 
 module.exports = router;
