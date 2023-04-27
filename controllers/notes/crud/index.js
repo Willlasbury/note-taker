@@ -19,7 +19,11 @@ router.get("/:id", (req, res) => {
         throw err;
       } else {
         let dataArr = JSON.parse(data);
-        res.send(dataArr);
+        if (dataArr[req.body.id]){
+            res.send(dataArr[req.body.id])
+        } else{
+            alert(`Could not find id ${req.body.id}`)
+        }
       }
     });
   });
