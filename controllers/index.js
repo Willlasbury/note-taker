@@ -6,7 +6,11 @@ router.get("/", (req, res)=>{
     res.sendFile(path.join(__dirname, "../public"))
 })
 
-const notesRoute = require('./notes')
-router.use("/notes", notesRoute)
+
+const notesHTML = require('./notes')
+router.use("/notes", notesHTML)
+
+const notesRoute = require('./notes/api')
+router.use("/api/notes", notesRoute)
 
 module.exports = router
