@@ -2,17 +2,20 @@ const router = require("express").Router();
 const fs = require("fs");
 const  uuid = require('uuid');
 
+// get all data in db.json
 router.get("/", (req, res) => {
-  fs.readFile("./db/db.json", "utf-8", (err, data) => {
-    if (err) {
-      throw err;
-    } else {
-      let dataArr = JSON.parse(data);
-      res.send(dataArr);
-    }
-  });
+    fs.readFile("./db/db.json", "utf-8", (err, data) => {
+        if (err) {
+            throw err;
+        } else {
+            let dataArr = JSON.parse(data);
+            res.send(dataArr);
+        }
+    });
 });
 
+
+// get data by id in db.json
 router.get("/:id", (req, res) => {
     fs.readFile("./db/db.json", "utf-8", (err, data) => {
       if (err) {
@@ -28,6 +31,7 @@ router.get("/:id", (req, res) => {
     });
   });
 
+  // add note to db.json
 router.post("/", (req, res) => {
   fs.readFile("./db/db.json", "utf-8", (err, data) => {
     if (err) {
@@ -50,4 +54,6 @@ router.post("/", (req, res) => {
     }
   });
 });
+
+
 module.exports = router;
